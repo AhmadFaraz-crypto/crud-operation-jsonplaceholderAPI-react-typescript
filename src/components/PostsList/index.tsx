@@ -87,7 +87,7 @@ const PostList: React.FC<IProps> = (props) => {
           Add New Post
         </Button>
       </div>
-      <div className="main mt-3">
+      <div className="main mt-3 table-responsive">
         <table className="table">
           <thead>
             <tr>

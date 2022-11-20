@@ -115,3 +115,11 @@ table {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+@media only screen and (max-width: 600px) {
+  .App {
+    /* text-align: center; */
+    width: 90%;
+    margin: auto;
+  }
+}
