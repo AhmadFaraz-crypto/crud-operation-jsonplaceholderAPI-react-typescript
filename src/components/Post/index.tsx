@@ -101,8 +101,8 @@ const Post: React.FC<IProps> = (props) => {
   return (
     <>
       <Modal show={isOpen} animation={true}>
-        <Modal.Header className="text-center">
-          <Modal.Title >{editObj.title ? "Edit Post" : "Add New Post"}</Modal.Title>
+        <Modal.Header className="modal-header">
+          <Modal.Title className="mx-auto">{editObj.title ? "Edit Post" : "Add New Post"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
@@ -124,7 +124,7 @@ const Post: React.FC<IProps> = (props) => {
           <Button disabled={loader} variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button data-testId="add-button" disabled={loader} variant="primary" onClick={onSubmit}>
+          <Button data-testId="add-button" className="add-btn" disabled={loader} variant="primary" onClick={onSubmit}>
             {loader ? <Spinner color="primary" size="sm" /> : "Save"}
           </Button>
         </Modal.Footer>

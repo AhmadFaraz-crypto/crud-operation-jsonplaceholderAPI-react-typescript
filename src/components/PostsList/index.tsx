@@ -83,15 +83,15 @@ const PostList: React.FC<IProps> = (props) => {
   return (
     <div className="mt-5">
       <div className="d-flex justify-content-end">
-        <Button variant="primary" onClick={() => openModal()}>
+        <Button className="add-btn" onClick={() => openModal()}>
           Add New Post
         </Button>
       </div>
-      <div className="card mt-3">
+      <div className="main mt-3">
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Title</th>
+              <th scope="column1">Title</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
