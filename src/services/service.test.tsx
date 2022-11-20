@@ -1,4 +1,4 @@
-import { deletePostAPI, getPostsAPI, patchAPI, postAPI } from "./service";
+import { deletePostAPI, getPostsAPI, putAPI, postAPI } from "./service";
 
 // GET API TEST
 describe('GET POST API TEST', () => {
@@ -29,15 +29,15 @@ describe('POST API TEST', () => {
     });
 });
 
-// PATCH API TEST
-describe('PATCH API TEST', () => {
+// PUT API TEST
+describe('PUT API TEST', () => {
     test('pass', () => {
-      const testData = { "id": 101, "title": "This is for testing", "userId": 1, "body": ""};
+      const testData = { "id": 1, "title": "This is for testing", "userId": 1, "body": ""};
   
       const response = { json: jest.fn().mockResolvedValueOnce(testData) };
       global.fetch = jest.fn().mockResolvedValueOnce(response);
   
-      return patchAPI(testData).then((data) => {
+      return putAPI(testData).then((data) => {
         expect(data.data).toEqual(testData);
       });
     });

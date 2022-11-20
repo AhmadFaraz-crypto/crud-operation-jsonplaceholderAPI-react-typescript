@@ -15,13 +15,13 @@ import { EditIcon, DeleteIcon } from "./Icons";
 import { getPostsAPI, deletePostAPI } from "../../services/service";
 
 // interfaces
-import { POSTOBJECT, NOTIFICATION } from '../../Interface/index';
+import { PostPayload, Notification } from '../../Interface/index';
 
 // props
 type IProps = {
-  setNotification: (msg: NOTIFICATION) => void;
+  setNotification: (msg: Notification) => void;
   setIsOpen: (isOpen: boolean) => void;
-  setEditObj: (obj: POSTOBJECT) => void;
+  setEditObj: (post: PostPayload) => void;
   setPostList: (arr: string[]) => void;
   postList: string[];
 };
@@ -29,7 +29,8 @@ type IProps = {
 const PostList: React.FC<IProps> = (props) => {
   const { setIsOpen, setEditObj, setNotification, postList, setPostList } =
     props;
-  const [loader, setLoader] = useState<any>(null);
+  const [loader, setLoader] = useState<boolean>(false);
+  const [editId, setEditId] = useState<number>(0);
 
   useEffect(() => {
     getData();
@@ -50,7 +51,8 @@ const PostList: React.FC<IProps> = (props) => {
 
   // Delete POST
   const deletePost = async (id: number) => {
-    setLoader(id);
+    setLoader(true);
+    setEditId(id);
     try {
       const response = await deletePostAPI(id);
       if (response.data) {
@@ -64,7 +66,8 @@ const PostList: React.FC<IProps> = (props) => {
     } catch (error) {
       setNotification({ msg: "Something went wrong", color: "danger" });
     }
-    setLoader(null);
+    setEditId(0);
+    setLoader(false);
   };
 
   // GET POSTS list
@@ -93,7 +96,7 @@ const PostList: React.FC<IProps> = (props) => {
             </tr>
           </thead>
           <tbody>
-            {postList.slice(0, 10).map((item: any, index: any) => (
+            {postList.slice(0, 10).map((item: any, index: number) => (
               <tr key={index}>
                 <td>{item.title}</td>
                 <td>
@@ -101,7 +104,7 @@ const PostList: React.FC<IProps> = (props) => {
                     <EditIcon />
                   </span>
                   <span className="pointer ms-3" onClick={() => deletePost(item.id)}>
-                    {(loader === item.id) ? <Spinner color="danger" size="sm" /> : <DeleteIcon />}
+                    {((editId === item.id) && loader) ? <Spinner color="danger" size="sm" /> : <DeleteIcon />}
                   </span>
                 </td>
               </tr>

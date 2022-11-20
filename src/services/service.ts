@@ -1,5 +1,8 @@
 import axios from "axios";
 
+// interfaces
+import { PostPayload } from '../Interface/index';
+
 const endPoint = "https://jsonplaceholder.typicode.com"
 
 export const getPostsAPI = async () => {
@@ -8,15 +11,15 @@ export const getPostsAPI = async () => {
     return response;
 }
 
-export const postAPI = async (obj: any) => {
+export const postAPI = async (payload: PostPayload) => {
     const url = `${endPoint}/posts`;
-    const response = await axios.post(url, obj);
+    const response = await axios.post(url, payload);
     return response;
 }
 
-export const patchAPI = async (obj: any) => {
-    const url = `${endPoint}/posts/${obj.id}`;
-    const response = await axios.patch(url, obj);
+export const putAPI = async (payload: PostPayload) => {
+    const url = `${endPoint}/posts/${payload.id}`;
+    const response = await axios.put(url, payload);
     return response;
 }
 

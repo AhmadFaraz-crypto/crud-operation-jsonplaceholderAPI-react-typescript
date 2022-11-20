@@ -1,5 +1,5 @@
 import PostList from './PostsList';
 import Post from './Post';
-import Notification from './Notification';
+import NotificationComponent from './Notification';
 
-export { Post, PostList, Notification };
+export { Post, PostList, NotificationComponent };

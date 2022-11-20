@@ -6,14 +6,14 @@
 import React, { useEffect, useState } from "react";
 
 // interfaces
-import { NOTIFICATION } from '../../Interface/index';
+import { Notification } from '../../Interface/index';
 
 type IProps = {
-  notification: NOTIFICATION;
-  setNotification: (msg: NOTIFICATION) => void;
+  notification: Notification;
+  setNotification: (msg: Notification) => void;
 };
 
-const Notification: React.FC<IProps> = (props) => {
+const NotificationComponent: React.FC<IProps> = (props) => {
   const { notification, setNotification } = props;
 
   const [toastShow, setToastShow] = useState<string>('');
@@ -55,4 +55,4 @@ const Notification: React.FC<IProps> = (props) => {
   );
 };
 
-export default Notification;
+export default NotificationComponent;

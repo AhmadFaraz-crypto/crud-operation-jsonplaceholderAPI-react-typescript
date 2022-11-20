@@ -4,15 +4,15 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // components
-import { PostList, Post, Notification } from "./components";
+import { PostList, Post, NotificationComponent } from "./components";
 
 //interfaces
-import { POSTOBJECT, NOTIFICATION } from './Interface/index';
+import { PostPayload, Notification } from './Interface/index';
 
 function App() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [editObj, setEditObj] = useState<POSTOBJECT>({userId: 0, title: "string", body: ""});
-  const [notification, setNotification] = useState<NOTIFICATION>({ msg: "", color: "" });
+  const [editObj, setEditObj] = useState<PostPayload>({userId: 0, title: "", body: "", id: 0});
+  const [notification, setNotification] = useState<Notification>({ msg: "", color: "" });
   const [postList, setPostList] = useState<string[]>([]);
 
   return (
@@ -28,12 +28,13 @@ function App() {
         setIsOpen={setIsOpen}
         isOpen={isOpen}
         editObj={editObj}
+        setEditObj={setEditObj}
         setNotification={setNotification}
         setPostList={setPostList}
         postList={postList}
       />
       {notification.msg && (
-        <Notification
+        <NotificationComponent
           setNotification={setNotification}
           notification={notification}
         />
