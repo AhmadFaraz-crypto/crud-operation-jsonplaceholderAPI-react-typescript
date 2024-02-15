@@ -18,6 +18,41 @@
 5.  Run `yarn test` to run test cases.
 6.  Run `yarn run clean` to delete the example app.
 
+## Running End-to-End Tests with Playwright
+
+To run end-to-end tests with Playwright, follow this command:
+
+```sh
+npm run test-e2e
+```
+
+By default, the tests will run in headless mode. To run the tests in non-headless mode, run:
+
+```sh
+npm run test-e2e -- --headed
+```
+
+To run the tests in a specific browser, run:
+
+```sh
+npm run test-e2e -- --project=chromium
+```
+
+To run the tests only in a specific file, run:
+
+```sh
+npm run test-e2e -- fileName.spec.ts
+```
+
+To debug a test, you can either run:
+
+```sh
+npm run test-e2e -- --debug fileName.spec.ts
+```
+
+or you can use a combination of `await page.pause()` and `npm run test:e2e -- --headed fileName.spec.ts`.
+
+
 ## Demo
 
 https://youtu.be/Pk5ZZMorhyw
